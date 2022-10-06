@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-left rounded shadow py-5">
+            <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <h3>Registration Form</h3>
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username"
+                        required formControlName="username">
+                    <div class="err" *ngIf="submitted && find.username.errors">
+                        <div class="text-danger" *ngIf="find.username.errors.required"> Enter username</div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="password"> Password </label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter password" required
+                        formControlName="password">
+                    <div class="err" *ngIf="submitted && find.password.errors">
+                        <div class="text-danger" *ngIf="find.password.errors.required"> Password is Required</div>
+                        <div class="text-danger" *ngIf="find.password.errors.minlength"> Password at least min 6 word
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"> Confirm Password </label>
+                    <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm password"
+                        required formControlName="confirmpassword">
+                    <div class="err" *ngIf="submitted && find.confirmpassword.errors">
+                        <div class="text-danger" *ngIf="find.confirmpassword.errors.required">Confirm Password is
+                            Required</div>
+                        <div class="text-danger" *ngIf="find.confirmpassword.errors.MustMatch"> Password Missmatch
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <button (click)="show()" type="submit" class="btn btn-success mt-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
